@@ -1,7 +1,7 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: guestbook
+  name: guestbook-slave
   namespace: argocd
 spec:
   project: management-argocd
@@ -10,7 +10,7 @@ spec:
     targetRevision: master
     path: guestbook
   destination:
-    server: https://kubernetes.default.svc  # Use value from `argocd cluster list`
+    server: https://boma-slave-cluster-dns-lb0ev465.hcp.swedencentral.azmk8s.io:443  # Use value from `argocd cluster list`
     namespace: default
   syncPolicy:
     automated:
